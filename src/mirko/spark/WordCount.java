@@ -11,8 +11,8 @@ import scala.Tuple2;
 
 public class WordCount {
 	public static void main(String[] args) {		
-		String inputPath = args[0];
-		String outputPath = args[1];
+		final String inputPath = args[0];
+		final String outputPath = args[1];
 	
 		SparkConf conf=new SparkConf().setAppName("Spark Word Count").setMaster("local");
 		JavaSparkContext sc = new JavaSparkContext(conf);
