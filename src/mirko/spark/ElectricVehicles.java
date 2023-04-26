@@ -12,7 +12,7 @@ public class ElectricVehicles {
 		final String outputPath = args[1];
 		final int N = Integer.parseInt(args[2]);
 
-		SparkConf conf=new SparkConf().setAppName("Electric Vehicles").setMaster("local");
+		SparkConf conf = new SparkConf().setAppName("Electric Vehicles").setMaster("local");
 		JavaSparkContext sc = new JavaSparkContext(conf);
 
 		JavaPairRDD<Integer, String> rdd = sc
