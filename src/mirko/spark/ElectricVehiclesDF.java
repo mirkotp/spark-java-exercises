@@ -3,6 +3,7 @@ package mirko.spark;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
+import static org.apache.spark.sql.functions.col;
 
 public class ElectricVehiclesDF {
 	public static void main(String[] args) {		
@@ -27,10 +28,10 @@ public class ElectricVehiclesDF {
 			.write()
 			.csv(outputPath + "-bottom");
 
-		df.sort(df.col("count").desc())
+		df.sort(col("count").desc())
 			.limit(N)
 			.write()
-			.csv(outputPath + "-top");
+			.json(outputPath + "-top");
 		
 		spark.close();
 	}
