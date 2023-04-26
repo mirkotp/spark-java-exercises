@@ -18,20 +18,16 @@ public class ElectricVehiclesDF {
 			.read()
 			.option("delimiter", ",")
 			.option("header", true)
-			.csv(inputPath);
-
-		Dataset<Row> grouped = df
+			.csv(inputPath)
 			.groupBy("Make", "Model")
 			.count();
 			
-		grouped
-			.sort("count")
+		df.sort("count")
 			.limit(N)
 			.write()
 			.csv(outputPath + "-bottom");
 
-		grouped
-			.sort(grouped.col("count").desc())
+		df.sort(df.col("count").desc())
 			.limit(N)
 			.write()
 			.csv(outputPath + "-top");
