@@ -23,23 +23,20 @@ public class ElectricVehiclesSQL {
 		df.createOrReplaceTempView("ev");
 
 		spark.sql(
-				"(SELECT Make, Model, Count(*) AS count \n" +
-				"	FROM ev 							\n" +
-				"	GROUP BY Make, Model 				\n" +
-				"	ORDER BY count 						\n" +
-				"	LIMIT " + N + " 					\n" +
-				")										\n" +
-				"										\n" +
-				"UNION 									\n" +
-				"										\n" +
-				"(SELECT Make, Model, Count(*) AS count	\n" +
-				"	FROM ev 							\n" +
-				"	GROUP BY Make, Model				\n" +
-				"	ORDER BY count DESC 				\n" +
-				"	LIMIT " + N + " 					\n" +
-				")										\n" +
-				"										\n" +
-				"ORDER BY count						  	  ")
+				"(SELECT Make, Model, Count(*) AS count " +
+					"FROM ev " +
+					"GROUP BY Make, Model " +
+					"ORDER BY count " +
+					"LIMIT " + N + ") " +
+					
+				"UNION " +
+				
+				"(SELECT Make, Model, Count(*) AS count " +
+					"FROM ev " +
+					"GROUP BY Make, Model " +
+					"ORDER BY count DESC " +
+					"LIMIT " + N + ") " +
+				"ORDER BY count")
 			.write()
 			.json(outputPath);
 		
