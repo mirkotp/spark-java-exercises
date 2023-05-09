@@ -24,7 +24,7 @@ public class DS_SQL {
 				"FROM restaurants " +
 				"WHERE main_cuisine_type = \"Italian\" " +
 				"GROUP BY city")
-			.show();
+			.show(); 
 
 		spark.close();
 	}
