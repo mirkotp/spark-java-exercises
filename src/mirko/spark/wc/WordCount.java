@@ -1,4 +1,4 @@
-package mirko.spark;
+package mirko.spark.wc;
 
 import java.util.Arrays;
 

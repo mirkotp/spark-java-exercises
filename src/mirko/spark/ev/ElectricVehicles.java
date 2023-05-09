@@ -1,4 +1,4 @@
-package mirko.spark;
+package mirko.spark.ev;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
