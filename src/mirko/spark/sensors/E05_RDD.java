@@ -30,7 +30,9 @@ public class E05_RDD {
 			.countByKey();
 		
 		countById.forEach((k, v) -> {
-			System.out.println(k + " - " + v);
+			if(v >= 3) {
+				System.out.println(k + " - " + v);
+			}
 		});
 
 		sc.close();
