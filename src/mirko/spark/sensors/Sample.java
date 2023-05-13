@@ -1,7 +1,7 @@
 package mirko.spark.sensors;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class Sample implements Serializable {
     private int sensorId;
