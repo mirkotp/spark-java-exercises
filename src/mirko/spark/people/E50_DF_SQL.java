@@ -2,7 +2,7 @@ package mirko.spark.people;
 
 import org.apache.spark.sql.SparkSession;
 
-public class E47_DF_SQL {
+public class E50_DF_SQL {
 	public static void main(String[] args) {		
 		final String inputPath = args[0];
 
@@ -16,13 +16,11 @@ public class E47_DF_SQL {
 			.option("header", "true")
 			.option("inferSchema", "true")
 			.csv(inputPath)
-			.filter("gender = 'male'")
 			.createOrReplaceTempView("people");
 
 			spark
-				.sql("SELECT name, age + 1 " +
-					"FROM people " +
-					"WHERE gender = 'male'")
+				.sql("SELECT CONCAT(name, ' ', gender) as name_gender " +
+					"FROM people ")
 				.show();
 				
 		spark.close();
